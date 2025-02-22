@@ -1,0 +1,19 @@
+{{ define "main" }}
+  {{ partial "page-header" . }}
+
+
+  <section class="section">
+    <div class="container">
+      <div class="row">
+        <!-- blog posts -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-x-5 gap-y-14">
+          {{ range .Data.Pages }}
+            <div class="mb-14">
+              {{ partial "components/blog-card" . }}
+            </div>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </section>
+{{ end }}

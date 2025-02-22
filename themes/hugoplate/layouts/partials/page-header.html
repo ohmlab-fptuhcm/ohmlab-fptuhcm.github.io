@@ -1,0 +1,17 @@
+<section>
+  <div class="container text-center">
+    {{ $image := resources.Get "images/home/ohm-lab-banner.jpg" }}
+    <div
+      class="rounded-b-2xl px-8 py-14 relative bg-center bg-cover bg-no-repeat"
+      style="background-image: url('{{ $image.Permalink }}');">
+      <div
+        class="w-full absolute left-0 top-0 h-full bg-black/60 z-10 rounded-b-2xl"></div>
+      <div class="relative z-20 text-zinc-200 dark:text-zinc-200">
+        <h1 class="text-zinc-200 dark:text-zinc-200">{{ default .Title }}</h1>
+        {{ default .Description }}
+      </div>
+      <!-- <h1>{{ T (printf "%s" (lower .Title)) | default .Title | title }}</h1> -->
+      <!-- {{ partial "components/breadcrumb" (dict "Context" . "Class" "mt-6") }} -->
+    </div>
+  </div>
+</section>

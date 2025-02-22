@@ -1,0 +1,83 @@
+media:
+  input: assets/images
+  output: /images
+  categories: ["image"]
+content:
+  - name: posts
+    label: Posts
+    type: collection
+    path: content/blog
+    view:
+      fields: [image, title, date, categories, tags]
+    fields:
+      - { name: title, label: Title, type: string, required: true }
+      - { name: description, label: Description, type: string }
+      - { name: meta_title, label: Meta Title, type: string }
+      - {
+          name: image,
+          label: Cover image,
+          type: image,
+          options: { source: "image" },
+        }
+      - {
+          name: date,
+          label: Date,
+          type: date,
+          options: { time: true, format: "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'" },
+        }
+      - name: author
+        label: Author
+        type: string
+        default: "OHM LAB"
+      - name: categories
+        label: Categories
+        type: string
+        list: true
+      - name: tags
+        label: Tags
+        type: string
+        list: true
+      - name: draft
+        label: Draft
+        type: boolean
+        default: false
+      - { name: body, label: Body, type: rich-text }
+  - name: activities
+    label: Activities
+    type: collection
+    path: content/activity
+    view:
+      fields: [image, title, date, categories, tags]
+    fields:
+      - { name: title, label: Title, type: string, required: true }
+      - { name: description, label: Description, type: string }
+      - { name: meta_title, label: Meta Title, type: string }
+      - {
+          name: image,
+          label: Cover image,
+          type: image,
+          options: { source: "image" },
+        }
+      - {
+          name: date,
+          label: Date,
+          type: date,
+          options: { time: true, format: "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'" },
+        }
+      - name: author
+        label: Author
+        type: string
+        default: "OHM LAB"
+      - name: categories
+        label: Categories
+        type: string
+        list: true
+      - name: tags
+        label: Tags
+        type: string
+        list: true
+      - name: draft
+        label: Draft
+        type: boolean
+        default: false
+      - { name: body, label: Body, type: rich-text }

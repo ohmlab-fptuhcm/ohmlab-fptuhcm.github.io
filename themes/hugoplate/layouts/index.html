@@ -1,0 +1,67 @@
+{{ define "main" }}
+  <!-- Banner -->
+  {{ with .Params.banner }}
+    {{ $image := resources.Get "images/home/ohm-lab-banner.jpg" }}
+    <div
+      class="relative flex justify-center items-center section pt-14 h-screen bg-cover bg-no-repeat bg-top"
+      style="background-image: url('{{ $image.Permalink }}');">
+      <div class="top-0 absolute w-full h-full bg-black/60"></div>
+      <!-- {{ partial "image" (dict "Src" .image "Alt" "Banner image" "Loading" "eager" "Class" "mx-auto lg:!max-w-[800px]" "DisplayXL" "800x" ) }} -->
+      <div class="container z-10">
+        <div class="row justify-center">
+          <div class="lg:col-7 md:col-9 mb-8 text-center">
+            <h1
+              class="mb-4 text-h3 lg:text-h1 text-zinc-300 dark:text-zinc-300">
+              {{ .title | markdownify }}
+            </h1>
+            <p class="mb-8 text-zinc-200">
+              {{ .content | markdownify }}
+            </p>
+          </div>
+          <div class="col-12">
+            <!-- {{ partial "image" (dict "Src" .image "Alt" "Banner image" "Loading" "eager" "Class" "mx-auto lg:!max-w-[800px]" "DisplayXL" "800x" ) }} -->
+          </div>
+        </div>
+      </div>
+    </div>
+  {{ end }}
+  <!-- /Banner -->
+
+  <!-- Blog -->
+  <div class="py-8">
+    <h1 class="mb-8 text-h4 text-center">Blog</h1>
+    <div class="container">
+      <!-- blog posts -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-x-5 gap-y-14">
+        {{ range first 6 (where .Site.RegularPages "Section" "blog") }}
+          {{ partial "components/blog-card" . }}
+        {{ end }}
+      </div>
+      <div class="my-4 text-center">
+        <a class="btn btn-outline-primary btn-sm" href="/blog">
+          {{ T "read_more" }}
+        </a>
+      </div>
+    </div>
+  </div>
+  <!-- /Blog -->
+
+  <!-- Activities -->
+  <section class="section bg-gradient">
+    <h1 class="mb-8 text-h4 text-center">Activity</h1>
+    <div class="container">
+      <!-- blog posts -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-x-5 gap-y-14">
+        {{ range first 6 (where .Site.RegularPages "Section" "activity") }}
+          {{ partial "components/blog-card" . }}
+        {{ end }}
+      </div>
+      <div class="my-4 text-center">
+        <a class="btn btn-outline-primary btn-sm" href="/blog">
+          {{ T "read_more" }}
+        </a>
+      </div>
+    </div>
+  </section>
+  <!-- /Activities -->
+{{ end }}
